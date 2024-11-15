@@ -23,7 +23,7 @@ describe("QueryProcessor", () => {
         const query = "what's your USB ID?";
         const response: string = QueryProcessor(query);
         expect(response).toBe((
-		"YOUR USB ID SHOULD BE HERE"
+		"15-10088"
     	));
     });
 });
