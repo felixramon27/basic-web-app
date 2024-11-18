@@ -8,13 +8,32 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("usb id")) {
-    // TODO añade tu USB ID a continuación
-    // TODO actualiza el caso de prueba correspondiente en __tests__
-    return ( "15-10088" );
+    return "15-10088";
   }
 
   if (query.toLowerCase().includes("name")) {
-    return ( "Felix Arnos" );
+    return "Felix Arnos";
   }
+
+  // Detectar y procesar la suma de dos números en el formato "What is X plus Y?"
+  const sumMatch = query.match(/what is (\d+) plus (\d+)\?/i);
+  if (sumMatch) {
+    const num1 = parseInt(sumMatch[1], 10);
+    const num2 = parseInt(sumMatch[2], 10);
+    return (num1 + num2).toString();
+  }
+
+  // Detectar y procesar el número más grande en el formato "Which of the following numbers is the largest: X, Y, Z?"
+  const largestMatch = query.match(
+    /which of the following numbers is the largest: ([\d, ]+)\?/i
+  );
+  if (largestMatch) {
+    const numbers = largestMatch[1]
+      .split(",")
+      .map((num) => parseInt(num.trim(), 10));
+    const largestNumber = Math.max(...numbers);
+    return largestNumber.toString();
+  }
+
   return "";
 }
