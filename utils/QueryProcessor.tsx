@@ -12,5 +12,9 @@ export default function QueryProcessor(query: string): string {
     // TODO actualiza el caso de prueba correspondiente en __tests__
     return ( "15-10088" );
   }
+
+  if (query.toLowerCase().includes("name")) {
+    return ( "Felix Arnos" );
+  }
   return "";
 }
